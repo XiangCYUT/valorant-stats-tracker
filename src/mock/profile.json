@@ -1,0 +1,20 @@
+{
+  "player": {
+    "gameName": "DemoPlayer",
+    "tagLine": "DEMO",
+    "puuid": "demo-puuid-123456",
+    "stats": {
+      "headshot_rate": "21%",
+      "most_used_weapon": {
+        "name": "Vandal",
+        "kills": 1250
+      },
+      "win_rate": "53%",
+      "map_win_rates": [
+        { "map": "Ascent", "rate": "60%" },
+        { "map": "Bind", "rate": "55%" },
+        { "map": "Haven", "rate": "45%" }
+      ]
+    }
+  }
+} 

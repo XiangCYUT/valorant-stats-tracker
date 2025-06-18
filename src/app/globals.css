@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-roboto-mono);
+  
+  /* 亮色主題變數 - 更新為更豐富的色彩 */
+  --background: 210 17% 98%; /* 淡灰藍白色，對應 light-200 */
+  --foreground: 215 14% 30%; /* 深灰色，對應 light-900 */
+  --card: 0 0% 100%; /* 純白，對應 light-100 */
+  --card-foreground: 215 14% 30%; /* 深灰色，對應 light-900 */
+  --popover: 0 0% 100%; /* 純白 */
+  --popover-foreground: 215 14% 30%;
+  --primary: 0 89% 60%; /* 保持原有主色調 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 16% 93%; /* 對應 light-300 */
+  --secondary-foreground: 215 14% 30%;
+  --muted: 210 14% 89%; /* 對應 light-400 */
+  --muted-foreground: 215 10% 60%; /* 中灰色，對應 light-700 */
+  --accent: 205 100% 55%; /* 保持原有強調色 */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 100% 40%; /* 保持原有警告色 */
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 13% 85%; /* 對應 light-500 */
+  --input: 210 13% 85%; /* 對應 light-500 */
+  --ring: 0 89% 60%; /* 保持原有 */
+  --radius: 0.5rem;
+  
+  /* 新增色彩變數 */
+  --success: 140 60% 50%; /* 綠色 */
+  --success-foreground: 0 0% 100%;
+  --warning: 45 93% 50%; /* 黃色 */
+  --warning-foreground: 215 14% 30%;
+}
+
+.dark {
+  /* 暗色主題變數 */
+  --background: 0 0% 9%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 90%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 0 73% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 205 85% 40%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 73% 57%;
+  
+  /* 新增色彩變數 - 深色模式 */
+  --success: 140 50% 45%;
+  --success-foreground: 0 0% 100%;
+  --warning: 45 90% 45%;
+  --warning-foreground: 0 0% 10%;
+}
+
+@layer base {
+  body {
+    @apply bg-light-200 text-light-900 dark:bg-dark-600 dark:text-light-100;
+    font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    @apply box-border m-0 p-0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-light-900 dark:text-light-100;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  a {
+    @apply text-primary-600 dark:text-primary-400 hover:underline transition-colors duration-200;
+  }
+
+  button {
+    @apply cursor-pointer transition-all duration-200;
+  }
+
+  input, textarea, select {
+    @apply bg-light-300 dark:bg-dark-300 border border-light-500 dark:border-dark-100 rounded-md p-2 outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-600 transition-all duration-200;
+  }
+
+  /* 自定義卡片樣式 */
+  .card {
+    @apply bg-light-100 dark:bg-dark-500 border border-light-500 dark:border-dark-300 rounded-lg shadow-soft;
+  }
+
+  /* 按鈕樣式 */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white dark:bg-primary-600 dark:hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply bg-light-400 hover:bg-light-500 text-light-900 dark:bg-dark-300 dark:hover:bg-dark-200 dark:text-light-100;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 hover:bg-accent-600 text-white dark:bg-accent-600 dark:hover:bg-accent-700;
+  }
+  
+  /* 新增按鈕樣式 */
+  .btn-success {
+    @apply bg-success-500 hover:bg-success-600 text-white;
+  }
+  
+  .btn-warning {
+    @apply bg-warning-500 hover:bg-warning-600 text-light-900;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-500 dark:to-accent-500;
+  }
+  
+  /* 新增實用樣式 */
+  .bg-gradient-light {
+    background-image: linear-gradient(to bottom, rgba(250, 62, 62, 0.25), #ffffff);
+  }
+  
+  /* 深色模式下覆蓋漸層，使用純色 */
+  .dark .bg-gradient-light {
+    background-image: none !important;
+    background-color: #121212 !important;
+  }
+  
+  .bg-gradient-soft {
+    @apply bg-gradient-to-b from-light-200 to-light-100 dark:bg-none dark:bg-dark-500;
+  }
+  
+  .panel {
+    @apply bg-light-100 dark:bg-dark-500 border border-light-500 dark:border-dark-300 rounded-lg shadow-soft p-4;
+  }
+  
+  .panel-accent {
+    @apply bg-light-200 dark:bg-dark-400 border-l-4 border-accent-500 rounded-lg shadow-soft p-4;
+  }
+  
+  .panel-success {
+    @apply bg-success-50 dark:bg-success-900/20 border border-success-200 dark:border-success-800/30 rounded-lg p-4;
+  }
+  
+  .panel-warning {
+    @apply bg-warning-50 dark:bg-warning-900/20 border border-warning-200 dark:border-warning-800/30 rounded-lg p-4;
+  }
+}

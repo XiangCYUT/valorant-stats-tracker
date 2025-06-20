@@ -1,4 +1,5 @@
-// app/recaptcha/page.tsx（僅顯示重點）
+// app/recaptcha/page.tsx
+export const dynamic = "force-dynamic";
 "use client";
 
 import { useEffect, useState } from "react";

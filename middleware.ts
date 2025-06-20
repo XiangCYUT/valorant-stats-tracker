@@ -30,15 +30,13 @@ export function middleware(request: NextRequest) {
   const ua = request.headers.get("user-agent") || "";
 
   // 白名單直接放行
-  const isAllowed = UA_WHITELIST.some((regex) => regex.test(ua));
-  if (isAllowed) {
+  if (UA_WHITELIST.some((regex) => regex.test(ua))) {
     return NextResponse.next();
   }
 
-  const isBlocked = UA_BLOCKLIST.some((regex) => regex.test(ua));
-
-  if (isBlocked) {
-    return new NextResponse(
+  // 黑名單：封鎖並避免 CDN 快取
+  if (UA_BLOCKLIST.some((regex) => regex.test(ua))) {
+    const blocked = new NextResponse(
       "<h1>Access Denied</h1><p>Your browser or tool is not supported.</p>",
       {
         status: 403,
@@ -47,9 +45,14 @@ export function middleware(request: NextRequest) {
         },
       }
     );
+    blocked.headers.set("x-middleware-cache", "no-cache");
+    return blocked;
   }
 
-  return NextResponse.next();
+  // 其他 UA：放行但告訴 Vercel 不要使用快取
+  const res = NextResponse.next();
+  res.headers.set("x-middleware-cache", "no-cache");
+  return res;
 }
 
 // 作用於除 _next/static 與 api/health 之外的所有路徑

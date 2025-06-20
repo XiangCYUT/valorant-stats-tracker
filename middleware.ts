@@ -1,0 +1,60 @@
+import { NextResponse, type NextRequest } from "next/server";
+
+// 簡易 UA 白名單，可依需求擴充
+const UA_WHITELIST = [
+  /Googlebot/i,
+  /bingbot/i,
+  /BaiduSpider/i,
+  /facebookexternalhit/i,
+  /Twitterbot/i,
+  /Slackbot/i,
+  /WhatsApp/i,
+  /Discordbot/i,
+  /LinkedInBot/i,
+  /Mozilla\/\d+/i, // 標準瀏覽器 UA
+];
+
+// 簡易 UA 黑名單，可依需求擴充
+const UA_BLOCKLIST = [
+  /curl/i,
+  /wget/i,
+  /python/i,
+  /requests/i,
+  /axios/i,
+  /go-http-client/i,
+  /libwww-perl/i,
+  /Java\//i,
+];
+
+export function middleware(request: NextRequest) {
+  const ua = request.headers.get("user-agent") || "";
+
+  // 白名單直接放行
+  const isAllowed = UA_WHITELIST.some((regex) => regex.test(ua));
+  if (isAllowed) {
+    return NextResponse.next();
+  }
+
+  const isBlocked = UA_BLOCKLIST.some((regex) => regex.test(ua));
+
+  if (isBlocked) {
+    return new NextResponse(
+      "<h1>Access Denied</h1><p>Your browser or tool is not supported.</p>",
+      {
+        status: 403,
+        headers: {
+          "Content-Type": "text/html",
+        },
+      }
+    );
+  }
+
+  return NextResponse.next();
+}
+
+// 作用於除 _next/static 與 api/health 之外的所有路徑
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|api/health).*)",
+  ],
+}; 

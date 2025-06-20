@@ -85,7 +85,7 @@ export default function RoadmapPage() {
               <div>
                 <h3 className="text-xl font-bold mb-3 text-light-900 dark:text-light-100">{t("backendTech")}</h3>
                 <ul className="list-disc ml-6 space-y-2 text-light-800 dark:text-light-300">
-                  <li>{t("fastapi")}</li>
+                  <li>{t("nextRouteHandlers")}</li>
                   <li>{t("riotApiIntegrationTech")}</li>
                 </ul>
               </div>

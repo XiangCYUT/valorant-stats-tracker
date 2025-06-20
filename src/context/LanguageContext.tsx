@@ -84,12 +84,9 @@ const translations: Record<Lang, Record<string, string>> = {
     nextjs: "Next.js 14/15 (React 框架)",
     typescript: "TypeScript",
     tailwindCss: "Tailwind CSS v4",
-    clientStateManagement: "客戶端狀態管理",
-    fastapi: "FastAPI (Python)",
-    redisCache: "Redis 快取",
-    postgresql: "PostgreSQL 資料庫",
     riotApiIntegrationTech: "Riot API 整合",
     themeSettings: "主題設置",
+    nextRouteHandlers: "Next.js Route Handlers (Node)",
   },
   en: {
     title: "Valorant Web Tool",
@@ -164,12 +161,9 @@ const translations: Record<Lang, Record<string, string>> = {
     nextjs: "Next.js 14/15 (React Framework)",
     typescript: "TypeScript",
     tailwindCss: "Tailwind CSS v4",
-    clientStateManagement: "Client-side State Management",
-    fastapi: "FastAPI (Python)",
-    redisCache: "Redis Caching",
-    postgresql: "PostgreSQL Database",
     riotApiIntegrationTech: "Riot API Integration",
     themeSettings: "Theme Settings",
+    nextRouteHandlers: "Next.js Route Handlers (Node)",
   },
 };
 

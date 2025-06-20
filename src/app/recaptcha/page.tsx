@@ -1,6 +1,7 @@
 // app/recaptcha/page.tsx
 
 "use client";
+import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ declare global {
   }
 }
 
-export default function Recaptcha() {
+function RecaptchaInner() {
   const [ready, setReady]   = useState(false);
   const [error, setError]   = useState("");
   const [loading, setLoading] = useState(false);
@@ -85,5 +86,13 @@ export default function Recaptcha() {
         }}
       />
     </>
+  );
+}
+
+export default function RecaptchaPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading…</div>}>
+      <RecaptchaInner />
+    </Suspense>
   );
 }

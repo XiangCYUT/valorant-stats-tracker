@@ -43,3 +43,7 @@ next-env.d.ts
 
 # Text notes in repository root
 /*.txt
+.vercel
+
+# sh
+setRiotApiKey.sh

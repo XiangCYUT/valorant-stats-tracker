@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import Card from "@/components/Card";
 
 interface AccountData {
@@ -26,7 +26,7 @@ type ErrorType =
     | { type: "custom", message: string };
 
 export default function RealApi() {
-    const { t } = useLanguage();
+    const { t } = useTranslation();
     const [accountData, setAccountData] = useState<AccountData | null>(null);
     const [activeShardData, setActiveShardData] = useState<ActiveShardData | null>(null);
     const [errorType, setErrorType] = useState<ErrorType | null>(null);

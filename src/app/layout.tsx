@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Roboto_Mono } from 'next/font/google'
-import { LanguageProvider } from '@/context/LanguageContext'
+import I18nProvider from '@/components/I18nProvider'
 import { ThemeProvider } from '@/context/ThemeContext'
 import Navbar from "./Navbar";
 
@@ -48,9 +48,9 @@ export default function RootLayout({
                 
                 // 檢查語言設置，移除不支持的語言設置
                 const storedLang = localStorage.getItem('lang');
-                if (storedLang && storedLang !== 'en' && storedLang !== 'zh-tw') {
-                  localStorage.setItem('lang', 'zh-tw');
-                  document.documentElement.lang = 'zh-tw';
+                if (storedLang && storedLang !== 'en' && storedLang !== 'zh') {
+                  localStorage.setItem('lang', 'zh');
+                  document.documentElement.lang = 'zh';
                 } else if (storedLang) {
                   document.documentElement.lang = storedLang;
                 }
@@ -65,14 +65,14 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${roboto_mono.variable} min-h-screen`}>
         <ThemeProvider>
-          <LanguageProvider>
+          <I18nProvider>
             <div className="flex flex-col min-h-screen">
               <Navbar />
               <main className="mx-auto w-full px-4">
                 {children}
               </main>
             </div>
-          </LanguageProvider>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

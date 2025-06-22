@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import Card from "@/components/Card";
 
 // Define the types for the profile data structure
@@ -26,7 +26,7 @@ interface PlayerProfile {
 }
 
 export default function Profile() {
-    const { t } = useLanguage();
+    const { t } = useTranslation();
     const [profile, setProfile] = useState<PlayerProfile | null>(null);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);

@@ -47,3 +47,6 @@ next-env.d.ts
 
 # sh
 setRiotApiKey.sh
+
+# some files
+/data

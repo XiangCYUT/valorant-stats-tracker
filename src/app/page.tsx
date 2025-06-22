@@ -3,11 +3,11 @@
 import Profile from "./Profile";
 import Shop from "./Shop";
 import RealApi from "./RealApi";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import RiotLoginButton from "./RiotLoginButton";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   return (
     <div className="w-full">
       <div className="bg-gradient-light py-12 mb-8">

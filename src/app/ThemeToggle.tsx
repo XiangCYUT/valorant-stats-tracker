@@ -1,11 +1,11 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import { useTheme } from "@/context/ThemeContext";
 import { useState, useRef, useEffect } from "react";
 
 export default function ThemeToggle() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const { theme, resolvedTheme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);

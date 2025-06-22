@@ -3,12 +3,12 @@
 import Link from "next/link";
 import LangToggle from "./LangToggle";
 import ThemeToggle from "./ThemeToggle";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import { useTheme } from "@/context/ThemeContext";
 import { useState } from "react";
 
 export default function Navbar() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const [open, setOpen] = useState(false);
   

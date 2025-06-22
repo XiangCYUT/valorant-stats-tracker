@@ -1,17 +1,18 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from "react";
-import type { Lang } from "@/context/LanguageContext";
+
+type Lang = "zh" | "en";
 
 export default function LangToggle() {
-  const { lang, setLang } = useLanguage();
+  const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const options: { code: Lang; label: string; flag: string }[] = [
     { code: "en", label: "English", flag: "🇺🇸" },
-    { code: "zh-tw", label: "繁體中文", flag: "🇹🇼" },
+    { code: "zh", label: "繁體中文", flag: "🇹🇼" },
   ];
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -25,7 +26,8 @@ export default function LangToggle() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const current = options.find((o) => o.code === lang) ?? options[0];
+  const currentLang = i18n.language as Lang;
+  const current = options.find((o) => o.code === currentLang) ?? options[0];
 
   return (
     <div ref={ref} className="relative">
@@ -54,11 +56,11 @@ export default function LangToggle() {
               <button
                 key={option.code}
                 onClick={() => {
-                  setLang(option.code);
+                  i18n.changeLanguage(option.code);
                   setOpen(false);
                 }}
                 className={`${
-                  lang === option.code 
+                  currentLang === option.code 
                     ? 'bg-light-200 dark:bg-dark-400 text-light-900 dark:text-light-100' 
                     : 'text-light-800 dark:text-light-200 hover:bg-light-200 dark:hover:bg-dark-400'
                 } w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors`}

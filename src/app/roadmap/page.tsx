@@ -1,9 +1,9 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 
 export default function RoadmapPage() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   return (
     <div className="w-full">

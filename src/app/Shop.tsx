@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import Card from "@/components/Card";
 
 // Define the type for a single shop item
@@ -13,7 +13,7 @@ interface ShopItem {
 }
 
 export default function Shop() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const [items, setItems] = useState<ShopItem[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);

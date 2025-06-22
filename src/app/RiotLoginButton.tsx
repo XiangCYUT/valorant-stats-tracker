@@ -1,10 +1,10 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
+import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 
 export default function RiotLoginButton() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const [hover, setHover] = useState(false);
   return (
     <div

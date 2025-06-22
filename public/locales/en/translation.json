@@ -70,7 +70,7 @@
   "esportsIntegration": "Esports Events Integration",
   "nextjs": "Next.js 15 (React Framework)",
   "typescript": "TypeScript",
-  "tailwindCss": "Tailwind CSS v4",
+  "tailwindCss": "Tailwind CSS",
   "riotApiIntegrationTech": "Riot API Integration",
   "themeSettings": "Theme Settings",
   "nextRouteHandlers": "Next.js Route Handlers (Node)"

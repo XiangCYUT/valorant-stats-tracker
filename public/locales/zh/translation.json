@@ -70,7 +70,7 @@
   "esportsIntegration": "電子競技賽事整合",
   "nextjs": "Next.js 15 (React 框架)",
   "typescript": "TypeScript",
-  "tailwindCss": "Tailwind CSS v4",
+  "tailwindCss": "Tailwind CSS",
   "riotApiIntegrationTech": "Riot API 整合",
   "themeSettings": "主題設置",
   "nextRouteHandlers": "Next.js Route Handlers (Node)"

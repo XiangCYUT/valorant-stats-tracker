@@ -1,0 +1,64 @@
+{
+  "title": "隱私權政策",
+  "intro": "本網站「Valorant Web Tools」（以下簡稱「本網站」或「本服務」）非常重視使用者的隱私權。本政策將說明我們如何蒐集、使用及保護你的資料。",
+  "sections": {
+    "dataCollection": {
+      "title": "一、我們蒐集哪些資料？",
+      "content": "我們不會主動收集你的個人資料（如帳號、email、IP 等）。但我們會透過以下方式取得一些必要的資訊：",
+      "types": [
+        "你的系統偏好色彩（深色或淺色模式），用來設定網站主題。",
+        "你的網站語言偏好（如中文或英文），以顯示對應語言內容。"
+      ],
+      "storage": "這些資訊僅會儲存在你的瀏覽器（localStorage），不會被傳送到任何伺服器，也不會被保存或用於識別身分。"
+    },
+    "cookies": {
+      "title": "二、Cookies 與其他技術",
+      "content": "本網站不使用 Cookie。唯有使用瀏覽器的 localStorage 來記錄主題顏色與語言偏好，以提升使用體驗。",
+      "recaptcha": "我們也使用 Google 提供的 reCAPTCHA v3 機制來保護網站不受自動程式攻擊，該服務可能會蒐集使用者的瀏覽行為來辨識是否為機器人，這部分由 Google 管理並遵守其隱私權政策。"
+    },
+    "dataUsage": {
+      "title": "三、資料的用途",
+      "content": "上述資訊的使用目的如下：",
+      "purposes": [
+        "讓網站根據你的系統自動套用合適的主題色彩。",
+        "儲存你選擇的網站語言，避免每次重新設定。",
+        "使用 Google reCAPTCHA 保護表單與功能安全。"
+      ]
+    },
+    "dataRetention": {
+      "title": "四、資料的保留與儲存",
+      "content": "我們不會將任何資料儲存到我們的伺服器。一切偏好資料都保存在你本人的瀏覽器中，且你可隨時透過清除瀏覽器資料自行刪除。"
+    },
+    "dataSecurity": {
+      "title": "五、資料安全",
+      "content": "由於本網站不會保留使用者的資料，因此不存在伺服器端資料被竊取的風險。"
+    },
+    "loginAge": {
+      "title": "六、關於登入與年齡",
+      "content": "大多數功能必須透過 Riot Sign On（RSO）登入才能使用。RSO 登入由 Riot Games 提供，且會根據 Riot 的條款進行使用者身份與年齡驗證。如果你能完成 RSO 登入，代表你已符合 Riot Games 對於帳號年齡的使用條件。"
+    },
+    "thirdParty": {
+      "title": "七、第三方服務",
+      "content": "本網站使用的 Google reCAPTCHA v3 為第三方服務，其隱私政策請參考：",
+      "link": "https://policies.google.com/privacy"
+    },
+    "userRights": {
+      "title": "八、使用者權利",
+      "content": "由於本網站不會收集或儲存個人資料，因此不提供帳號刪除或資料查詢申請。",
+      "additional": "你可以透過瀏覽器設定手動刪除 localStorage 中的偏好資料。"
+    },
+    "policyChanges": {
+      "title": "九、政策異動",
+      "content": "如有任何本政策內容的更新，我們會在本網站公告修正版本並註明日期。"
+    },
+    "contact": {
+      "title": "十、聯絡方式",
+      "content": "若你對本網站的隱私政策有任何疑問，歡迎透過下列方式聯絡開發者：",
+      "email": "sjx.codes@gmail.com"
+    },
+    "version": {
+      "version": "版本：v1.0",
+      "date": "更新日期：2025 / 06 / 23"
+    }
+  }
+} 

@@ -3,7 +3,8 @@ import type { Metadata } from 'next'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import I18nProvider from '@/components/I18nProvider'
 import { ThemeProvider } from '@/context/ThemeContext'
-import Navbar from "./Navbar";
+import Navbar from "./Navbar"
+import Footer from "@/components/Footer"
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -68,9 +69,10 @@ export default function RootLayout({
           <I18nProvider>
             <div className="flex flex-col min-h-screen">
               <Navbar />
-              <main className="mx-auto w-full px-4">
+              <main className="mx-auto w-full px-4 flex-1">
                 {children}
               </main>
+              <Footer />
             </div>
           </I18nProvider>
         </ThemeProvider>

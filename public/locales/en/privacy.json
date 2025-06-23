@@ -1,0 +1,64 @@
+{
+  "title": "Privacy Policy",
+  "intro": "This website \"Valorant Web Tools\" (hereinafter referred to as \"this website\" or \"this service\") highly values user privacy. This policy explains how we collect, use, and protect your data.",
+  "sections": {
+    "dataCollection": {
+      "title": "1. What Data Do We Collect?",
+      "content": "We do not actively collect your personal data (such as accounts, email, IP, etc.). However, we obtain some necessary information through the following methods:",
+      "types": [
+        "Your system color preference (dark or light mode) to set the website theme.",
+        "Your website language preference (such as Chinese or English) to display corresponding language content."
+      ],
+      "storage": "This information is only stored in your browser (localStorage), will not be transmitted to any server, and will not be saved or used for identification."
+    },
+    "cookies": {
+      "title": "2. Cookies and Other Technologies",
+      "content": "This website does not use cookies. We only use the browser's localStorage to record theme colors and language preferences to enhance user experience.",
+      "recaptcha": "We also use Google's reCAPTCHA v3 mechanism to protect the website from automated attacks. This service may collect users' browsing behavior to identify bots. This part is managed by Google and follows its privacy policy."
+    },
+    "dataUsage": {
+      "title": "3. Data Usage",
+      "content": "The purposes of using the above information are as follows:",
+      "purposes": [
+        "Allowing the website to automatically apply appropriate theme colors based on your system.",
+        "Storing your chosen website language to avoid resetting each time.",
+        "Using Google reCAPTCHA to protect form and feature security."
+      ]
+    },
+    "dataRetention": {
+      "title": "4. Data Retention and Storage",
+      "content": "We do not store any data on our servers. All preference data is stored in your own browser, and you can delete it at any time by clearing browser data."
+    },
+    "dataSecurity": {
+      "title": "5. Data Security",
+      "content": "Since this website does not retain user data, there is no risk of server-side data theft."
+    },
+    "loginAge": {
+      "title": "6. About Login and Age",
+      "content": "Most features require login through Riot Sign On (RSO) to use. RSO login is provided by Riot Games and verifies user identity and age according to Riot's terms. If you can complete RSO login, it means you meet Riot Games' account age requirements."
+    },
+    "thirdParty": {
+      "title": "7. Third-Party Services",
+      "content": "The Google reCAPTCHA v3 used by this website is a third-party service. For its privacy policy, please refer to:",
+      "link": "https://policies.google.com/privacy"
+    },
+    "userRights": {
+      "title": "8. User Rights",
+      "content": "Since this website does not collect or store personal data, we do not provide account deletion or data query requests.",
+      "additional": "You can manually delete preference data in localStorage through browser settings."
+    },
+    "policyChanges": {
+      "title": "9. Policy Changes",
+      "content": "If there are any updates to this policy content, we will announce the revised version on this website with the date noted."
+    },
+    "contact": {
+      "title": "10. Contact Information",
+      "content": "If you have any questions about this website's privacy policy, please contact the developer through the following methods:",
+      "email": "sjx.codes@gmail.com"
+    },
+    "version": {
+      "version": "Version: v1.0",
+      "date": "Updated: 2025 / 06 / 23"
+    }
+  }
+} 

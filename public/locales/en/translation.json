@@ -73,5 +73,11 @@
   "tailwindCss": "Tailwind CSS",
   "riotApiIntegrationTech": "Riot API Integration",
   "themeSettings": "Theme Settings",
-  "nextRouteHandlers": "Next.js Route Handlers (Node)"
+  "nextRouteHandlers": "Next.js Route Handlers (Node)",
+  "footer": {
+    "copyright": "© {{year}} Valorant Web Tool. All rights reserved.",
+    "disclaimer": "This website is not affiliated with Riot Games. Valorant is a registered trademark of Riot Games.",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  }
 } 

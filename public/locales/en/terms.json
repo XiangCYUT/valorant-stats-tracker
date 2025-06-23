@@ -1,0 +1,64 @@
+{
+  "title": "Terms of Service",
+  "sections": {
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "content": "Welcome to Valorant Web Tools (hereinafter referred to as \"this website\" or \"this service\"). By using this website, you agree to comply with the following Terms of Service. If you do not agree to these terms, please stop using this website."
+    },
+    "serviceIntro": {
+      "title": "2. Service Introduction",
+      "content": "This website is a Valorant information query tool developed by players, providing the following main features:",
+      "features": [
+        "View personal headshot rate, body and leg hit rates",
+        "Query match history",
+        "Display the top three agents and maps with the highest win rates",
+        "Display daily shop skins",
+        "Automatically switch theme colors (dark/light mode) based on user device system preferences",
+        "Save user's selected language settings (such as Chinese or English)"
+      ],
+      "additional": "This service is completely free, with no advertisements and no payment required from users."
+    },
+    "riotApi": {
+      "title": "3. Riot API and Data Source Declaration",
+      "content": "This website uses public data provided by the official Riot Games API to provide functional services and does not represent an official product of Riot Games, Inc.",
+      "trademark": "League of Legends®, VALORANT™, and Riot Games® are trademarks and intellectual property of Riot Games, Inc.",
+      "disclaimer": "This website is not an official Riot Games product and has not been officially approved, sponsored, or endorsed."
+    },
+    "userLogin": {
+      "title": "4. User Identity and Login Restrictions",
+      "content": "Most features of this website require login through Riot Sign On (RSO) to access personal game data. Without login, only limited features are available.",
+      "privacy": "You do not need to provide any personal data (such as email or phone number), and this website will not store any personal information. The website only stores your chosen theme color and language settings through the browser to enhance user experience. This information is stored in your own browser and will not be transmitted to servers or third parties."
+    },
+    "usageRules": {
+      "title": "5. Usage Rules",
+      "content": "When using this website, please follow these rules:",
+      "rules": [
+        "Do not interfere with the normal operation of this website in any way.",
+        "Do not engage in any behavior that may harm the security of Riot API or service stability.",
+        "Do not impersonate others or attempt to illegally access other players' data."
+      ]
+    },
+    "liability": {
+      "title": "6. Liability Limitation and Service Interruption",
+      "content": "This website strives to provide accurate and real-time information, but we do not guarantee that all data is completely accurate or synchronized in real-time. The developer bears no legal responsibility for any losses caused by data errors or service interruptions."
+    },
+    "termination": {
+      "title": "7. Service Termination and Changes",
+      "content": "We reserve the right to add, delete, or adjust the content and functions of this website at any time, and may terminate the service as needed without prior notice."
+    },
+    "modification": {
+      "title": "8. Terms Revision",
+      "content": "These terms may be updated as functions are adjusted. Major changes will be announced on the website. We recommend that you regularly review the latest terms content."
+    },
+    "contact": {
+      "title": "9. Contact Information",
+      "content": "If you have any questions or suggestions, please contact us:",
+      "email": "sjx.codes@gmail.com"
+    },
+    "version": {
+      "title": "10. Terms Version",
+      "version": "Version: v1.0",
+      "date": "Updated: 2025 / 06 / 23"
+    }
+  }
+} 

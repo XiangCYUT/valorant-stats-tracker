@@ -152,7 +152,7 @@ export default function RealApi() {
     };
 
     return (
-        <Card id="demo">
+        <Card>
             <h2 className="text-2xl font-bold text-center mb-6 text-primary-600 dark:text-primary-500">{t("realApiTitle")}</h2>
             <div className="text-center mb-4">
             </div>

@@ -45,8 +45,5 @@ next-env.d.ts
 /*.txt
 .vercel
 
-# sh
-setRiotApiKey.sh
-
 # some files
 /data

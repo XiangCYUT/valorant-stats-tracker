@@ -90,7 +90,16 @@ export default function RealApi() {
         
         try {
             // Step1: Account
-            const accountRes = await fetch(`/api/riot/account/${gameName}/${tagLine}`);
+            const accountRes = await fetch(`/api/riot/account`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    gameName,
+                    tagLine
+                })
+            });
             if (!accountRes.ok) {
                 const errBody = await accountRes.json();
                 throw handleApiError(accountRes, errBody);
@@ -98,7 +107,15 @@ export default function RealApi() {
             const account = await accountRes.json();
 
             // Step2: Active Shard
-            const shardRes = await fetch(`/api/riot/active-shard/${account.puuid}`);
+            const shardRes = await fetch(`/api/riot/active-shard`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    puuid: account.puuid
+                })
+            });
 
             let shard: ActiveShardData | null = null;
             if (!shardRes.ok) {

@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAccount } from "@/lib/riotApi";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ gameName: string; tagLine: string }> }
-): Promise<NextResponse> {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { gameName, tagLine } = await params;
+    const body = await request.json();
+    const { gameName, tagLine } = body;
+    
+    // 驗證必要參數
+    if (!gameName || !tagLine) {
+      return NextResponse.json(
+        { message: "gameName and tagLine are required" },
+        { status: 400 }
+      );
+    }
+    
     const data = await getAccount(gameName, tagLine);
     return NextResponse.json(data);
   } catch (err: any) {
@@ -16,4 +23,4 @@ export async function GET(
       { status }
     );
   }
-}
+} 

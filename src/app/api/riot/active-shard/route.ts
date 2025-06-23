@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getActiveShard } from "@/lib/riotApi";
 
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: Promise<{ puuid: string }> }
-): Promise<NextResponse> {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const { puuid } = await params;
+    const body = await request.json();
+    const { puuid } = body;
+    
+    // 驗證必要參數
+    if (!puuid) {
+      return NextResponse.json(
+        { message: "puuid is required" },
+        { status: 400 }
+      );
+    }
+    
     const data = await getActiveShard(puuid);
     return NextResponse.json(data);
   } catch (err: any) {
@@ -16,4 +23,4 @@ export async function GET(
       { status }
     );
   }
-}
+} 

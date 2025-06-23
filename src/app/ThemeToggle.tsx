@@ -77,7 +77,7 @@ export default function ThemeToggle() {
       </button>
       
       {isMenuOpen && (
-        <div className="absolute right-0 top-full mt-2 w-44 max-w-[80vw] rounded-md shadow-lg bg-white dark:bg-dark-500 ring-1 ring-black ring-opacity-5 z-50">
+        <div className="absolute left-0 sm:right-0 sm:left-auto top-full mt-2 w-44 max-w-[90vw] rounded-md shadow-lg bg-white dark:bg-dark-500 ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu" aria-orientation="vertical">
             <button
               onClick={() => {

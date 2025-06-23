@@ -36,12 +36,6 @@ export default function Navbar() {
           >
             Roadmap
           </Link>
-          <Link 
-            href="/" 
-            className="text-light-900 dark:text-light-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors font-medium"
-          >
-            Demo
-          </Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LangToggle />
@@ -80,13 +74,6 @@ export default function Navbar() {
             className="block text-light-900 dark:text-light-300 hover:text-primary-500 dark:hover:text-primary-400"
           >
             Roadmap
-          </Link>
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="block text-light-900 dark:text-light-300 hover:text-primary-500 dark:hover:text-primary-400"
-          >
-            Demo
           </Link>
           <div className="flex items-center gap-2 pt-2">
             <ThemeToggle />

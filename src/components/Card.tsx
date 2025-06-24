@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 import React from "react";
 
 interface CardProps extends React.HTMLAttributes<HTMLElement> {

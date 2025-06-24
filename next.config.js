@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   /** 讓 Funnel 網域能載入開發資源 (_next/…) */
-  allowedDevOrigins: ["*.tail77df8d.ts.net"],
+  allowedDevOrigins: ["192.168.0.100:3000"],
 
   // 在生產建置時忽略 ESLint 錯誤，避免 next build 中斷
   eslint: {

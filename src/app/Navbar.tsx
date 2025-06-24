@@ -1,20 +1,13 @@
-"use client";
-
 import Link from "next/link";
 import LangToggle from "./LangToggle";
 import ThemeToggle from "./ThemeToggle";
-import { useTranslation } from 'react-i18next';
-import { useTheme } from "@/context/ThemeContext";
-import { useState } from "react";
+import NavbarMobile from "@/components/navbar/NavbarMobile";
 
 export default function Navbar() {
-  const { t } = useTranslation();
-  const { theme } = useTheme();
-  const [open, setOpen] = useState(false);
-  
   return (
     <nav className="w-full py-4 px-6 sticky top-0 z-40 backdrop-blur-md bg-light-200/90 dark:bg-dark-500/90 border-b border-light-500 dark:border-dark-300 shadow-soft">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center relative">
+        {/* Logo - Server Component */}
         <Link 
           href="/" 
           className="text-xl font-bold flex items-center gap-2 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
@@ -28,7 +21,8 @@ export default function Navbar() {
           </svg>
           Valorant Web Tool
         </Link>
-        {/* Desktop Links */}
+
+        {/* Desktop Links - Server Component */}
         <div className="hidden md:flex items-center gap-5">
           <Link 
             href="/roadmap" 
@@ -42,45 +36,14 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden flex items-center justify-center p-2 rounded hover:bg-light-300/60 dark:hover:bg-dark-400/60 focus:outline-none"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Dropdown */}
-      {open && (
-        <div className="md:hidden mt-2 space-y-2 px-4 pb-4">
-          <Link
-            href="/roadmap"
-            onClick={() => setOpen(false)}
-            className="block text-light-900 dark:text-light-300 hover:text-primary-500 dark:hover:text-primary-400"
-          >
-            Roadmap
-          </Link>
-          <div className="flex items-center gap-2 pt-2">
+        {/* Mobile Menu - Client Component */}
+        <NavbarMobile>
+          <div className="flex items-center gap-2 justify-center">
             <ThemeToggle />
             <LangToggle />
           </div>
-        </div>
-      )}
+        </NavbarMobile>
+      </div>
     </nav>
   );
 } 

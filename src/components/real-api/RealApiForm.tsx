@@ -25,13 +25,15 @@ export default function RealApiForm() {
     setResult(null);
 
     try {
+      // 調用 Server Action 獲取數據
       const data = await fetchRiotAccount(gameName, tagLine);
       setResult(data);
     } catch (error: any) {
+      // 處理 Server Action 調用錯誤
       setResult({
         error: {
           type: "unknown_error",
-          message: error.message
+          message: error.message || "未知錯誤"
         }
       });
     } finally {

@@ -7,6 +7,7 @@
   "fetchPuuid": "Search",
   "loading": "Loading...",
   "error": "Error",
+  "unknown error": "unknown error",
   "successResponse": "Success! Riot API Response:",
   "accountInfo": "Account Information",
   "puuidLabel": "PUUID",

@@ -49,6 +49,9 @@ export default function RealApiResult({ result }: RealApiResultProps) {
         <h3 className="text-lg font-semibold text-red-700 dark:text-red-400 mb-2">{t("error")}</h3>
         <div className="text-sm text-left bg-white/80 dark:bg-gray-800/50 p-3 rounded overflow-auto max-h-60">
           <p className="text-red-600 dark:text-red-300">{getErrorMessage(result.error.type)}</p>
+          {result.error.message && result.error.type === "custom" && (
+            <p className="text-red-600 dark:text-red-300 mt-2">{result.error.message}</p>
+          )}
         </div>
       </div>
     );
@@ -86,6 +89,6 @@ export default function RealApiResult({ result }: RealApiResultProps) {
     );
   }
 
-  // 未知情況，不應該發生
+  // 未知情況，返回空
   return null;
 } 

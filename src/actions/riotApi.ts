@@ -1,5 +1,7 @@
 "use server";
 
+import { getAccount, getActiveShard } from "@/lib/riotApi";
+
 type ErrorType = 
   | { type: "contact_developer" }
   | { type: "player_not_found" }
@@ -9,9 +11,11 @@ type ErrorType =
   | { type: "custom", message: string };
 
 // 錯誤處理共用函式，返回錯誤類型
-function handleApiError(response: Response, errorData: any): ErrorType {
+function handleApiError(status: number, errorData: any): ErrorType {
+  console.error(`[Server] API Error: Status ${status}`, errorData);
+  
   // 根據狀態碼返回錯誤類型
-  switch (response.status) {
+  switch (status) {
     case 400:
       return { type: "contact_developer" };
     case 401:
@@ -35,57 +39,44 @@ function handleApiError(response: Response, errorData: any): ErrorType {
 }
 
 export async function fetchRiotAccount(gameName: string, tagLine: string) {
+  // 只在失敗時印出日誌，成功時不印出
   try {
-    // Step1: Account
-    const accountRes = await fetch(`${process.env.API_URL || ''}/api/riot/account`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        gameName,
-        tagLine
-      })
-    });
-    
-    if (!accountRes.ok) {
-      const errBody = await accountRes.json();
-      return { error: handleApiError(accountRes, errBody) };
-    }
-    const account = await accountRes.json();
+    // 直接使用 riotApi 函數庫，而不是通過 API 路由
+    // Step1: Account - 直接調用 getAccount 函數
+    const account = await getAccount(gameName, tagLine);
 
-    // Step2: Active Shard
-    const shardRes = await fetch(`${process.env.API_URL || ''}/api/riot/active-shard`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        puuid: account.puuid
-      })
-    });
-
+    // Step2: Active Shard - 直接調用 getActiveShard 函數
     let shard = null;
-    if (!shardRes.ok) {
-      // 404 代表此 PUUID 尚未產生 VALORANT active shard，屬可接受情況
-      if (shardRes.status !== 404) {
-        const errBody = await shardRes.json();
-        return { error: handleApiError(shardRes, errBody) };
+    try {
+      shard = await getActiveShard(account.puuid);
+    } catch (error: any) {
+      // 如果是 404 錯誤，代表玩家尚未有 shard，這是可接受的
+      if (error.status !== 404) {
+        console.error(`[Server] Shard API error:`, error);
+        return { error: handleApiError(error.status, error.body) };
       }
-    } else {
-      shard = await shardRes.json();
     }
 
-    // 返回結果
+    // 返回結果，成功時不印出日誌
     return { 
       accountData: account, 
       activeShardData: shard 
     };
   } catch (error: any) {
+    console.error(`[Server] Error fetching account data for ${gameName}#${tagLine}:`, error);
+    
+    // 處理自定義錯誤格式
+    if (error.status) {
+      return { 
+        error: handleApiError(error.status, error.body) 
+      };
+    }
+    
+    // 處理一般錯誤
     return { 
       error: { 
         type: "unknown_error", 
-        message: error.message 
+        message: error.message || "Unknown error occurred" 
       }
     };
   }

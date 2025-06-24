@@ -2,11 +2,13 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+// 預先匯入翻譯檔案
+import enTranslation from '../../public/locales/en/translation.json';
+import zhTranslation from '../../public/locales/zh/translation.json';
 
 // 僅在客戶端初始化 i18n
 if (typeof window !== 'undefined') {
   i18n
-    .use(HttpBackend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
@@ -14,8 +16,14 @@ if (typeof window !== 'undefined') {
       lng: 'zh', // 預設使用中文
       debug: process.env.NODE_ENV === 'development',
       
-      backend: {
-        loadPath: '/locales/{{lng}}/translation.json',
+      // 使用預先匯入的翻譯資源，而不是通過 HTTP 請求載入
+      resources: {
+        en: {
+          translation: enTranslation
+        },
+        zh: {
+          translation: zhTranslation
+        }
       },
       
       detection: {
@@ -35,10 +43,10 @@ if (typeof window !== 'undefined') {
     lng: 'zh',
     resources: {
       zh: {
-        translation: {}
+        translation: zhTranslation
       },
       en: {
-        translation: {}
+        translation: enTranslation
       }
     },
     interpolation: {

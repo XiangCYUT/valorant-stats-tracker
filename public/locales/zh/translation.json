@@ -7,6 +7,7 @@
   "fetchPuuid": "查詢",
   "loading": "載入中...",
   "error": "錯誤",
+  "unknown error": "未知錯誤",
   "successResponse": "成功！Riot API 回傳：",
   "accountInfo": "帳號資訊",
   "puuidLabel": "PUUID",

@@ -12,13 +12,13 @@ export default function Home() {
       {/* Interactive Components Section - Client Components */}
       <div className="flex flex-col items-center">
         <div className="py-8 w-full flex justify-center">
-          <RealApi />
+        <RealApi />
         </div>
         <div className="py-8 w-full flex justify-center">
-          <Profile />
+        <Profile />
         </div>
         <div className="py-8 w-full flex justify-center">
-          <Shop />
+        <Shop />
         </div>
       </div>
     </div>

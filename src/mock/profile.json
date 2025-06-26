@@ -6,14 +6,14 @@
     "stats": {
       "headshot_rate": "21%",
       "most_used_weapon": {
-        "name": "Vandal",
+        "name": "9C82E19D-4575-0200-1A81-3EACF00CF872",
         "kills": 1250
       },
       "win_rate": "53%",
       "map_win_rates": [
-        { "map": "Ascent", "rate": "60%" },
-        { "map": "Bind", "rate": "55%" },
-        { "map": "Haven", "rate": "45%" }
+        { "map": "7EAECC1B-4337-BBF6-6AB9-04B8F06B3319", "rate": "60%" },
+        { "map": "2C9D57EC-4431-9C5E-2939-8F9EF6DD5CBA", "rate": "55%" },
+        { "map": "2BEE0DC9-4FFE-519B-1CBD-7FBE763A6047", "rate": "45%" }
       ]
     }
   }

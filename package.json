@@ -19,15 +19,21 @@
     "react-i18next": "^15.5.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^2.1.0",
+    "@eslint/eslintrc": "^2.1.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.21",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.0.4",
-    "postcss": "^8.5.5",
+    "eslint": "^9.0.0-alpha.1",
+    "eslint-config-next": "^15.3.3",
+    "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
+  },
+  "overrides": {
+    "rimraf": "^4.4.1",
+    "glob": "^10.4.5",
+    "@humanwhocodes/object-schema": "npm:@eslint/object-schema@^2.1.0",
+    "@humanwhocodes/config-array": "npm:@eslint/config-array@^2.1.0"
   }
 }

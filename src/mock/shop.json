@@ -1,26 +1,22 @@
 {
   "daily_offers": [
     {
-      "id": "skin-1",
-      "name": "Prime Vandal",
+      "id": "B9EE2457-481C-6776-3F5B-0CA8E8F90C89",
       "price": 1775,
-      "image_url": "https://static.valorant.com/assets/skin/prime_vandal.png"
+      "image_url": "https://static.valorant.com/assets/skin/Default__AssaultRifle_AK_HypeBeast_PrimaryAsset_C.png"
     },
     {
-      "id": "skin-2",
-      "name": "Reaver Phantom",
+      "id": "044B28BA-4C3B-D315-140D-D9A249DA5567",
       "price": 1775,
       "image_url": "https://static.valorant.com/assets/skin/reaver_phantom.png"
     },
     {
-      "id": "skin-3",
-      "name": "Elderflame Operator",
+      "id": "D722313D-43CB-B38D-7841-75880A3ED2CB",
       "price": 2475,
       "image_url": "https://static.valorant.com/assets/skin/elderflame_operator.png"
     },
     {
-      "id": "skin-4",
-      "name": "Ion Sheriff",
+      "id": "83778C03-45A3-67A2-3C89-6B8598327D58",
       "price": 1775,
       "image_url": "https://static.valorant.com/assets/skin/ion_sheriff.png"
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import Card from "@/components/Card";
 
@@ -8,12 +8,12 @@ import Card from "@/components/Card";
 interface PlayerStats {
     headshot_rate: string;
     most_used_weapon: {
-        name: string;
+        name: string; // 這裡存儲的是武器ID
         kills: number;
     };
     win_rate: string;
     map_win_rates: {
-        map: string;
+        map: string; // 這裡存儲的是地圖ID
         rate: string;
     }[];
 }
@@ -25,13 +25,57 @@ interface PlayerProfile {
     stats: PlayerStats;
 }
 
+// 快取機制，避免重複載入 JSON 檔案
+let contentCache: {
+    'zh-TW'?: any;
+    'en-US'?: any;
+} = {};
+
+// 將簡短的語言代碼映射到完整的語言代碼
+function getFullLocale(locale: string): string {
+    if (locale.startsWith('zh')) return 'zh-TW';
+    if (locale.startsWith('en')) return 'en-US';
+    return 'zh-TW'; // 默認返回中文
+}
+
+// 載入對應語言的內容檔案
+async function loadContentFile(locale: string) {
+    const fullLocale = getFullLocale(locale);
+    
+    if (contentCache[fullLocale as keyof typeof contentCache]) {
+        return contentCache[fullLocale as keyof typeof contentCache];
+    }
+
+    try {
+        const response = await fetch(`/api/content?locale=${fullLocale}`);
+        if (!response.ok) throw new Error(`Failed to load content file for ${fullLocale}`);
+        const content = await response.json();
+        contentCache[fullLocale as keyof typeof contentCache] = content;
+        return content;
+    } catch (error) {
+        console.error(`Error loading content file for ${fullLocale}:`, error);
+        return null;
+    }
+}
+
 export default function Profile() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [profile, setProfile] = useState<PlayerProfile | null>(null);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [gameName, setGameName] = useState("DemoPlayer");
     const [tagLine, setTagLine] = useState("DEMO");
+    const [contentData, setContentData] = useState<any>(null);
+    const currentLocale = i18n.language || 'zh-TW';
+
+    // 載入當前語言的內容檔案
+    useEffect(() => {
+        console.log(`Current language: ${currentLocale}, mapping to: ${getFullLocale(currentLocale)}`);
+        loadContentFile(currentLocale).then(data => {
+            console.log(`Content data loaded: ${data ? 'success' : 'failed'}`);
+            setContentData(data);
+        });
+    }, [currentLocale]);
 
     const fetchProfile = async () => {
         setError("");
@@ -50,6 +94,32 @@ export default function Profile() {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    // 根據 ID 查找武器名稱
+    const getWeaponNameById = (id: string): string => {
+        if (!contentData) return id;
+        
+        // 在 equips 中尋找武器
+        const weapon = contentData.equips?.find((item: any) => item.id === id);
+        if (weapon?.name) {
+            return weapon.name;
+        }
+        
+        return id; // 如果找不到，就返回原始 ID
+    };
+
+    // 根據 ID 查找地圖名稱
+    const getMapNameById = (id: string): string => {
+        if (!contentData) return id;
+        
+        // 在 maps 中尋找地圖
+        const map = contentData.maps?.find((item: any) => item.id === id);
+        if (map?.name) {
+            return map.name;
+        }
+        
+        return id; // 如果找不到，就返回原始 ID
     };
 
     return (
@@ -119,7 +189,9 @@ export default function Profile() {
                             </div>
                             <div className="bg-light-200 dark:bg-dark-500 p-4 rounded-lg">
                                 <p className="text-gray-500 dark:text-light-400 text-sm mb-1">{t("mostUsedWeapon")}</p>
-                                <p className="text-lg font-semibold text-gray-800 dark:text-light-100">{profile.stats.most_used_weapon.name}</p>
+                                <p className="text-lg font-semibold text-gray-800 dark:text-light-100">
+                                    {getWeaponNameById(profile.stats.most_used_weapon.name)}
+                                </p>
                                 <p className="text-xs text-gray-500 dark:text-light-400">{profile.stats.most_used_weapon.kills} kills</p>
                             </div>
                         </div>
@@ -128,7 +200,9 @@ export default function Profile() {
                             <div className="space-y-2">
                                 {profile.stats.map_win_rates.map(map_rate => (
                                     <div key={map_rate.map} className="flex justify-between items-center bg-light-200 dark:bg-dark-500 p-3 rounded-lg">
-                                        <span className="font-medium text-gray-700 dark:text-light-300">{map_rate.map}</span>
+                                        <span className="font-medium text-gray-700 dark:text-light-300">
+                                            {getMapNameById(map_rate.map)}
+                                        </span>
                                         <span className="font-bold bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-400 px-2 py-1 rounded">{map_rate.rate}</span>
                                     </div>
                                 ))}

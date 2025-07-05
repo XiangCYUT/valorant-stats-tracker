@@ -75,6 +75,13 @@
   "riotApiIntegrationTech": "Riot API Integration",
   "themeSettings": "Theme Settings",
   "nextRouteHandlers": "Next.js Route Handlers (Node)",
+  "accuracyTitle": "ACCURACY",
+  "accuracyHead": "Head",
+  "accuracyBody": "Body",
+  "accuracyLegs": "Legs",
+  "accuracyLastMatches": "Last 9 Matches",
+  "accuracyAvgHS": "AVG HS%",
+  "accuracyHits": "Hits",
   "footer": {
     "copyright": "© {{year}} Valorant Web Tool. All rights reserved.",
     "disclaimer": "This website is not affiliated with Riot Games. Valorant is a registered trademark of Riot Games.",

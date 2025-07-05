@@ -15,7 +15,7 @@ export default function PrivacyContent() {
         const data = await response.json();
         setPrivacyData(data);
       } catch (error) {
-        console.error('Failed to load privacy data:', error);
+        // 靜默處理錯誤
       }
     };
 

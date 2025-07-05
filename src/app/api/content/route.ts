@@ -9,11 +9,11 @@ export async function GET(request: NextRequest) {
   try {
     // 從 URL 參數中獲取語言
     const searchParams = request.nextUrl.searchParams;
-    const locale = searchParams.get('locale') || 'zh-TW';
+    const locale = searchParams.get('locale') || 'en-US';
 
     // 驗證語言參數，只允許特定的語言
     const validLocales = ['zh-TW', 'en-US'];
-    const safeLocale = validLocales.includes(locale) ? locale : 'zh-TW';
+    const safeLocale = validLocales.includes(locale) ? locale : 'en-US';
 
     // 檢查快取
     if (contentCache[safeLocale]) {
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json(content);
   } catch (error) {
-    console.error('Error reading content file:', error);
+    console.error('[Server] Error reading content file:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 } 

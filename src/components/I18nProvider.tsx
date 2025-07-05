@@ -12,19 +12,51 @@ export default function I18nProvider({ children }: I18nProviderProps) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    // 智能語言檢測函數
+    const detectAndSetLanguage = () => {
+      const savedLanguage = localStorage.getItem('i18nextLng');
+      
+      // 如果用戶已經選擇過語言，直接使用
+      if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en')) {
+        return savedLanguage;
+      }
+      
+      // 清除無效的儲存語言設定
+      if (savedLanguage) {
+        localStorage.removeItem('i18nextLng');
+      }
+      
+      // 首次訪問：檢測瀏覽器語言
+      const browserLanguages = navigator.languages || [navigator.language];
+      
+      // 智能映射語言
+      for (const lang of browserLanguages) {
+        const lowerLang = lang.toLowerCase();
+        
+        // 中文系列 → 繁體中文
+        if (lowerLang.startsWith('zh')) {
+          return 'zh';
+        }
+        
+        // 英文系列 → 英文
+        if (lowerLang.startsWith('en')) {
+          return 'en';
+        }
+      }
+      
+      // 其他語言（日文、法文、德文等）→ 英文
+      return 'en';
+    };
+
     // 等待 i18n 完全初始化
     const waitForI18n = async () => {
       if (typeof window !== 'undefined') {
         // 等待 i18n 初始化完成
         await i18n.loadNamespaces('translation');
         
-        // 設定預設語言
-        const savedLanguage = localStorage.getItem('i18nextLng');
-        if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en')) {
-          await i18n.changeLanguage(savedLanguage);
-        } else {
-          await i18n.changeLanguage('zh');
-        }
+        // 智能檢測並設定語言
+        const detectedLanguage = detectAndSetLanguage();
+        await i18n.changeLanguage(detectedLanguage);
         
         setIsReady(true);
       }

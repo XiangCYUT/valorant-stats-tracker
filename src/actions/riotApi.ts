@@ -63,7 +63,7 @@ export async function fetchRiotAccount(gameName: string, tagLine: string) {
       activeShardData: shard 
     };
   } catch (error: any) {
-    console.error(`[Server] Error fetching account data for ${gameName}#${tagLine}:`, error);
+    console.error(`[Server] Error fetching account data:`, error);
     
     // 處理自定義錯誤格式
     if (error.status) {

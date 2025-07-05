@@ -37,9 +37,9 @@ const authHeader = {
 };
 
 const fetchJson = async <T>(url: string): Promise<T> => {
-  console.log("[RIOT] →", url);
+  console.log("[RIOT API] →", url);
   const res = await fetch(url, { headers: authHeader });
-  console.log("[RIOT] ←", res.status, url);
+  console.log("[RIOT API] ←", res.status, url);
   if (!res.ok) {
     const errorBody = await res.json().catch(() => ({}));
     throw {

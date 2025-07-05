@@ -47,13 +47,10 @@ export default function RootLayout({
                 
                 // 在客戶端 JavaScript 運行後，將檢查系統偏好並更新主題
                 
-                // 檢查語言設置，移除不支持的語言設置
-                const storedLang = localStorage.getItem('lang');
+                // 檢查並清理不支持的語言設置
+                const storedLang = localStorage.getItem('i18nextLng');
                 if (storedLang && storedLang !== 'en' && storedLang !== 'zh') {
-                  localStorage.setItem('lang', 'zh');
-                  document.documentElement.lang = 'zh';
-                } else if (storedLang) {
-                  document.documentElement.lang = storedLang;
+                  localStorage.removeItem('i18nextLng');
                 }
               } catch (e) {
                 // 發生錯誤時使用淺色主題

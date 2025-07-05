@@ -21,7 +21,7 @@ let contentCache: {
 function getFullLocale(locale: string): string {
   if (locale.startsWith('zh')) return 'zh-TW';
   if (locale.startsWith('en')) return 'en-US';
-  return 'zh-TW'; // 默認返回中文
+  return 'en-US'; // 默認返回英文
 }
 
 // 載入對應語言的內容檔案
@@ -39,7 +39,6 @@ async function loadContentFile(locale: string) {
     contentCache[fullLocale as keyof typeof contentCache] = content;
     return content;
   } catch (error) {
-    console.error(`Error loading content file for ${fullLocale}:`, error);
     return null;
   }
 }
@@ -51,18 +50,15 @@ export default function Shop() {
   const [isLoading, setIsLoading] = useState(false);
   const [contentData, setContentData] = useState<any>(null);
   const [isContentLoading, setIsContentLoading] = useState(true);
-  const currentLocale = i18n.language || 'zh-TW';
+  const currentLocale = i18n.language || 'en-US';
 
   // 載入當前語言的內容檔案
   useEffect(() => {
-    console.log(`Shop - Current language: ${currentLocale}, mapping to: ${getFullLocale(currentLocale)}`);
     setIsContentLoading(true);
     loadContentFile(currentLocale).then(data => {
-      console.log(`Shop - Content data loaded: ${data ? 'success' : 'failed'}`);
       setContentData(data);
       setIsContentLoading(false);
     }).catch(err => {
-      console.error("Error loading content data:", err);
       setIsContentLoading(false);
     });
   }, [currentLocale]);
@@ -89,7 +85,6 @@ export default function Shop() {
   // 根據 ID 查找皮膚名稱
   const getSkinNameById = (id: string): string => {
     if (!contentData) {
-      console.log(`Content data not loaded yet for ID: ${id}`);
       return "Loading..."; // 當內容尚未載入時顯示載入中
     }
     
@@ -100,10 +95,8 @@ export default function Shop() {
         return skin.name;
       }
       
-      console.log(`Skin name not found for ID: ${id}`);
       return `Unknown Skin (${id.substring(0, 8)}...)`;
     } catch (error) {
-      console.error(`Error getting skin name for ID: ${id}`, error);
       return `Error (${id.substring(0, 8)}...)`;
     }
   };

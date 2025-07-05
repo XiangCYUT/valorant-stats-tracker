@@ -15,7 +15,7 @@ export default function TermsContent() {
         const data = await response.json();
         setTermsData(data);
       } catch (error) {
-        console.error('Failed to load terms data:', error);
+        // 靜默處理錯誤
       }
     };
 

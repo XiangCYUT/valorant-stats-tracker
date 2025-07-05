@@ -75,6 +75,13 @@
   "riotApiIntegrationTech": "Riot API 整合",
   "themeSettings": "主題設置",
   "nextRouteHandlers": "Next.js Route Handlers (Node)",
+  "accuracyTitle": "精準度圖表",
+  "accuracyHead": "頭部",
+  "accuracyBody": "身體",
+  "accuracyLegs": "腳",
+  "accuracyLastMatches": "最近9場統計",
+  "accuracyAvgHS": "平均爆頭%",
+  "accuracyHits": "擊中數",
   "footer": {
     "copyright": "© {{year}} Valorant Web Tool. 版權所有。",
     "disclaimer": "本網站與 Riot Games 無關。Valorant 是 Riot Games 的註冊商標。",

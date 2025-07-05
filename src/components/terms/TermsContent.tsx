@@ -91,22 +91,26 @@ export default function TermsContent() {
           <p className="text-muted-foreground">{termsData.sections.termination.content}</p>
         </section>
 
-        {/* 八、條款修訂 */}
+        {/* 八、管轄法律與司法管轄權 */}
+        <section>
+          <h2 className="text-xl font-semibold mb-3">{termsData.sections.jurisdiction.title}</h2>
+          <p className="text-muted-foreground">{termsData.sections.jurisdiction.content}</p>
+        </section>
+
+        {/* 九、條款修訂 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{termsData.sections.modification.title}</h2>
           <p className="text-muted-foreground">{termsData.sections.modification.content}</p>
         </section>
 
-        {/* 九、聯絡方式 */}
+        {/* 十、聯絡方式 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{termsData.sections.contact.title}</h2>
-          <p className="text-muted-foreground mb-2">{termsData.sections.contact.content}</p>
-          <p className="text-muted-foreground">{termsData.sections.contact.email}</p>
+          <p className="text-muted-foreground">{termsData.sections.contact.content}</p>
         </section>
 
-        {/* 十、條款版本 */}
+        {/* 條款版本 */}
         <section>
-          <h2 className="text-xl font-semibold mb-3">{termsData.sections.version.title}</h2>
           <p className="text-muted-foreground">{termsData.sections.version.version}</p>
           <p className="text-muted-foreground">{termsData.sections.version.date}</p>
         </section>

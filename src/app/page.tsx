@@ -17,9 +17,9 @@ export default function Home() {
         <div className="py-8 w-full flex justify-center">
         <Profile />
         </div>
-        <div className="py-8 w-full flex justify-center">
+        {/* <div className="py-8 w-full flex justify-center">
         <Shop />
-        </div>
+        </div> */}
       </div>
     </div>
   );

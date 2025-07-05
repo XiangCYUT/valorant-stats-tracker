@@ -43,37 +43,32 @@ export default function PrivacyContent() {
         {/* 一、我們蒐集哪些資料？ */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{privacyData.sections.dataCollection.title}</h2>
-          <p className="text-muted-foreground mb-3">{privacyData.sections.dataCollection.content}</p>
-          <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+          <p className="text-muted-foreground mb-3 whitespace-pre-line">{privacyData.sections.dataCollection.content}</p>
+          <ul className="list-none pl-6 space-y-2 text-muted-foreground">
             {privacyData.sections.dataCollection.types.map((type: string, index: number) => (
               <li key={index}>{type}</li>
             ))}
-          </ol>
+          </ul>
           <p className="text-muted-foreground mt-3">{privacyData.sections.dataCollection.storage}</p>
         </section>
 
-        {/* 二、Cookies 與其他技術 */}
+        {/* 二、我們如何儲存與保護資料 */}
+        <section>
+          <h2 className="text-xl font-semibold mb-3">{privacyData.sections.dataStorage.title}</h2>
+          <p className="text-muted-foreground whitespace-pre-line">{privacyData.sections.dataStorage.content}</p>
+        </section>
+
+        {/* 三、Cookies 與其他技術 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{privacyData.sections.cookies.title}</h2>
           <p className="text-muted-foreground mb-3">{privacyData.sections.cookies.content}</p>
           <p className="text-muted-foreground">{privacyData.sections.cookies.recaptcha}</p>
         </section>
 
-        {/* 三、資料的用途 */}
+        {/* 四、資料的用途 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{privacyData.sections.dataUsage.title}</h2>
-          <p className="text-muted-foreground mb-3">{privacyData.sections.dataUsage.content}</p>
-          <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-            {privacyData.sections.dataUsage.purposes.map((purpose: string, index: number) => (
-              <li key={index}>{purpose}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* 四、資料的保留與儲存 */}
-        <section>
-          <h2 className="text-xl font-semibold mb-3">{privacyData.sections.dataRetention.title}</h2>
-          <p className="text-muted-foreground">{privacyData.sections.dataRetention.content}</p>
+          <p className="text-muted-foreground whitespace-pre-line">{privacyData.sections.dataUsage.content}</p>
         </section>
 
         {/* 五、資料安全 */}
@@ -91,15 +86,7 @@ export default function PrivacyContent() {
         {/* 七、第三方服務 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{privacyData.sections.thirdParty.title}</h2>
-          <p className="text-muted-foreground mb-2">{privacyData.sections.thirdParty.content}</p>
-          <a 
-            href={privacyData.sections.thirdParty.link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700 underline"
-          >
-            {privacyData.sections.thirdParty.link}
-          </a>
+          <p className="text-muted-foreground whitespace-pre-line">{privacyData.sections.thirdParty.content}</p>
         </section>
 
         {/* 八、使用者權利 */}
@@ -118,8 +105,7 @@ export default function PrivacyContent() {
         {/* 十、聯絡方式 */}
         <section>
           <h2 className="text-xl font-semibold mb-3">{privacyData.sections.contact.title}</h2>
-          <p className="text-muted-foreground mb-2">{privacyData.sections.contact.content}</p>
-          <p className="text-muted-foreground">{privacyData.sections.contact.email}</p>
+          <p className="text-muted-foreground">{privacyData.sections.contact.content}</p>
         </section>
 
         {/* 版本資訊 */}

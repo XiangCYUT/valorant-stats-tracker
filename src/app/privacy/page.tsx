@@ -1,5 +1,7 @@
 import PrivacyContent from "@/components/privacy/PrivacyContent";
 
+export const dynamic = 'force-static';
+
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen py-12">

@@ -1,5 +1,7 @@
 import TermsContent from "@/components/terms/TermsContent";
 
+export const dynamic = 'force-static';
+
 export default function TermsOfService() {
   return (
     <div className="min-h-screen py-12">

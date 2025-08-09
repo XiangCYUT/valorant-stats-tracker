@@ -2,6 +2,8 @@
 
 "use client";
 import { Suspense } from "react";
+export const runtime = 'edge';
+export const preferredRegion = 'auto';
 export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";

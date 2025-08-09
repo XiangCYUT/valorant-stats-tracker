@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const runtime = 'nodejs';
+
 // 快取機制，避免重複讀取檔案
 const contentCache: Record<string, any> = {};
 
@@ -17,14 +19,18 @@ export async function GET(request: NextRequest) {
 
     // 檢查快取
     if (contentCache[safeLocale]) {
-      return NextResponse.json(contentCache[safeLocale]);
+      return NextResponse.json(contentCache[safeLocale], {
+        headers: {
+          'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=60',
+        },
+      });
     }
 
     // 讀取檔案
     const filePath = path.join(process.cwd(), 'data', `content_${safeLocale}.json`);
     
     if (!fs.existsSync(filePath)) {
-      return NextResponse.json({ error: 'Content not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Content not found' }, { status: 404, headers: { 'Cache-Control': 'no-store' } });
     }
     
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -32,9 +38,13 @@ export async function GET(request: NextRequest) {
     // 儲存到快取
     contentCache[safeLocale] = content;
     
-    return NextResponse.json(content);
+    return NextResponse.json(content, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=60',
+      },
+    });
   } catch (error) {
     console.error('[Server] Error reading content file:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500, headers: { 'Cache-Control': 'no-store' } });
   }
 } 

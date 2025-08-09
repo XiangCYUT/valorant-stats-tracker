@@ -3,6 +3,8 @@ import Shop from "./Shop";
 import RealApi from "./RealApi";
 import HomeHeader from "@/components/home/HomeHeader";
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   return (
     <div className="w-full">

@@ -69,6 +69,12 @@ function isAlwaysAllowedPath(pathname: string) {
 
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
+
+  // Always allow sitemap and robots to pass through
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
+    return NextResponse.next();
+  }
+
   const ua = req.headers.get("user-agent") || "";
   const method = req.method;
 

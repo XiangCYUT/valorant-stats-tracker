@@ -125,3 +125,4 @@ export const config = {
     "/((?!_next/|assets/|public/|images/|favicon.ico|robots.txt|sitemap.xml|manifest.webmanifest|api/recaptcha-verify|api/healthz|recaptcha).*)",
   ],
 };
+

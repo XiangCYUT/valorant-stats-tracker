@@ -1,8 +1,8 @@
 # robots.txt for valotrack.games
 
-# 允許所有搜尋引擎爬取所有內容
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
-# 指向網站地圖（幫助搜尋引擎更快收錄）
+# Sitemap location
 Sitemap: https://valotrack.games/sitemap.xml

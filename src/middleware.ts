@@ -39,6 +39,18 @@ const UA_BLOCKLIST = [
 ];
 
 /**
+ * 允許的常見瀏覽器 UA（一般使用者）
+ * - 放寬：常見 Desktop/Mobile 瀏覽器都可直通
+ */
+const BROWSER_ALLOW = [
+  /Chrome\/\d+/i,   // 包含 Chromium/Chrome（注意：Chrome UA 也含 Safari 標記）
+  /Edg\/\d+/i,      // Microsoft Edge
+  /Firefox\/\d+/i,  // Firefox
+  /OPR\/\d+/i,      // Opera
+  /Safari\/\d+/i,   // Safari（iOS 亦會命中）
+];
+
+/**
  * 判斷是否為「導覽型請求」：
  * - 瀏覽器直接開頁/換頁（GET + Accept: text/html）
  * - 避免攔 API / XHR / fetch / 圖片等資源請求
@@ -109,6 +121,11 @@ export function middleware(req: NextRequest) {
   }
 
   // 6) 僅對「導覽型請求」做人機驗證導向，其餘（API/XHR/資源）放行
+  //    6a) 若為常見瀏覽器 UA，直接放行（避免誤擋真實使用者）
+  if (isNavigationHTML(req) && BROWSER_ALLOW.some((r) => r.test(ua))) {
+    return NextResponse.next();
+  }
+
   if (isNavigationHTML(req)) {
     const url = req.nextUrl.clone();
     url.pathname = "/recaptcha";

@@ -82,10 +82,12 @@ function isAlwaysAllowedPath(pathname: string) {
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
 
+  /*
   // Debug 模式：?debug-bot=1 直接放行
   if (req.nextUrl.searchParams.get("debug-bot") === "1") {
     return NextResponse.next();
   }
+  */
 
   // Always allow sitemap and robots to pass through
   if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {

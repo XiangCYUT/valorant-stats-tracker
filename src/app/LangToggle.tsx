@@ -1,12 +1,14 @@
 "use client";
 
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
 
 type Lang = "zh" | "en";
 
 export default function LangToggle() {
   const { i18n } = useTranslation();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,8 +58,16 @@ export default function LangToggle() {
               <button
                 key={option.code}
                 onClick={() => {
+                  // 客戶端立即切換語言（影響 Client Components）
                   i18n.changeLanguage(option.code);
+                  // 設定 cookie 讓伺服器端頁面（SSR）也能讀取語言
+                  const oneYear = 60 * 60 * 24 * 365;
+                  document.cookie = `lang=${option.code}; path=/; max-age=${oneYear}; SameSite=Lax`;
+                  // 同步保存到 localStorage 以維持現有 i18n 行為
+                  try { localStorage.setItem('i18nextLng', option.code); } catch {}
                   setOpen(false);
+                  // 重新整理資料，讓 SSR 頁面（Terms/Privacy/Roadmap）即刻以新語系渲染
+                  router.refresh();
                 }}
                 className={`${
                   currentLang === option.code 

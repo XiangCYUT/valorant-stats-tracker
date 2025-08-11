@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslation } from 'react-i18next';
 import { fetchRiotAccount } from "@/actions/riotApi";
 import RealApiResult from "./RealApiResult";
 
-export default function RealApiForm() {
-  const { t } = useTranslation();
+interface RealApiFormProps {
+  dict: Record<string, string>;
+}
+
+export default function RealApiForm({ dict }: RealApiFormProps) {
+  const t = (key: string) => dict[key] ?? key;
   const [gameName, setGameName] = useState("TenZ");
   const [tagLine, setTagLine] = useState("001");
   const [isLoading, setIsLoading] = useState(false);
@@ -86,7 +89,7 @@ export default function RealApiForm() {
       </form>
 
       {/* 結果顯示區域 - 只在有數據時顯示 */}
-      {result && <RealApiResult result={result} />}
+      {result && <RealApiResult result={result} dict={dict} />}
     </>
   );
 } 

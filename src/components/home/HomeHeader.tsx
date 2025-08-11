@@ -1,10 +1,11 @@
-"use client";
-
-import { useTranslation } from 'react-i18next';
 import RiotLoginButton from "@/app/RiotLoginButton";
 
-export default function HomeHeader() {
-  const { t } = useTranslation();
+interface HomeHeaderProps {
+  dict: Record<string, string>;
+}
+
+export default function HomeHeader({ dict }: HomeHeaderProps) {
+  const t = (key: string) => dict[key] ?? key;
 
   return (
     <div className="bg-gradient-light py-12">
@@ -17,4 +18,4 @@ export default function HomeHeader() {
       </header>
     </div>
   );
-} 
+}

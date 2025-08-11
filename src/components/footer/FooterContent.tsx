@@ -1,14 +1,12 @@
-"use client";
-
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 
 interface FooterContentProps {
   currentYear: number;
+  dict: Record<string, any>;
 }
 
-export default function FooterContent({ currentYear }: FooterContentProps) {
-  const { t } = useTranslation();
+export default function FooterContent({ currentYear, dict }: FooterContentProps) {
+  const t = (key: string) => key.split('.').reduce((acc: any, k) => (acc ? acc[k] : undefined), dict) ?? key;
 
   return (
     <>
@@ -35,8 +33,8 @@ export default function FooterContent({ currentYear }: FooterContentProps) {
       
       {/* 版權信息 */}
       <p className="text-xs text-muted-foreground text-center">
-        {t('footer.copyright', { year: currentYear })}
+        {String(t('footer.copyright')).replace('{{year}}', String(currentYear))}
       </p>
     </>
   );
-} 
+}

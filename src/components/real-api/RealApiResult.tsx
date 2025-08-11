@@ -1,12 +1,10 @@
 "use client";
 
-import { useTranslation } from 'react-i18next';
-
 interface RealApiResultProps {
   result: {
-    error?: { 
+    error?: {
       type: string;
-      message?: string; 
+      message?: string;
     };
     accountData?: {
       puuid: string;
@@ -19,10 +17,11 @@ interface RealApiResultProps {
       activeShard: string;
     } | null;
   };
+  dict: Record<string, string>;
 }
 
-export default function RealApiResult({ result }: RealApiResultProps) {
-  const { t } = useTranslation();
+export default function RealApiResult({ result, dict }: RealApiResultProps) {
+  const t = (key: string) => dict[key] ?? key;
   
   // 根據錯誤類型獲取當前語言的錯誤訊息
   const getErrorMessage = (errorType: string): string => {

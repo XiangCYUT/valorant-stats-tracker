@@ -1,10 +1,37 @@
 import Card from "@/components/Card";
 import RealApiForm from "@/components/real-api/RealApiForm";
+import { headers, cookies } from "next/headers";
+import path from "path";
+import { promises as fs } from "fs";
 
-export default function RealApi() {
+async function detectLang(): Promise<"zh" | "en"> {
+  const cookieStore = await cookies();
+  const cookieLang = cookieStore.get("lang")?.value?.toLowerCase();
+  if (cookieLang === "zh" || cookieLang === "en") return cookieLang;
+  const hdrs = await headers();
+  const acceptLang = hdrs.get("accept-language")?.toLowerCase() || "";
+  if (acceptLang.startsWith("zh")) return "zh";
+  return "en";
+}
+
+async function loadDict(lang: "zh" | "en") {
+  const filePath = path.join(process.cwd(), "public", "locales", lang, "translation.json");
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(content) as Record<string, string>;
+  } catch {
+    const fallback = path.join(process.cwd(), "public", "locales", "en", "translation.json");
+    const content = await fs.readFile(fallback, "utf-8");
+    return JSON.parse(content) as Record<string, string>;
+  }
+}
+
+export default async function RealApi() {
+  const lang = await detectLang();
+  const dict = await loadDict(lang);
   return (
     <Card>
-      <RealApiForm />
+      <RealApiForm dict={dict} />
     </Card>
   );
-} 
+}

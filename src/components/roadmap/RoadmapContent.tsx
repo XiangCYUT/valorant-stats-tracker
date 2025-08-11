@@ -1,9 +1,9 @@
-"use client";
+interface RoadmapContentProps {
+  dict: Record<string, string>;
+}
 
-import { useTranslation } from 'react-i18next';
-
-export default function RoadmapContent() {
-  const { t } = useTranslation();
+export default function RoadmapContent({ dict }: RoadmapContentProps) {
+  const t = (key: string) => dict[key] ?? key;
 
   return (
     <>

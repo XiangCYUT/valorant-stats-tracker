@@ -82,9 +82,24 @@ function isAlwaysAllowedPath(pathname: string) {
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
 
+  // Debug 模式：?debug-bot=1 直接放行
+  if (req.nextUrl.searchParams.get("debug-bot") === "1") {
+    return NextResponse.next();
+  }
+
   // Always allow sitemap and robots to pass through
   if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
     return NextResponse.next();
+  }
+
+  // /wp 開頭一律 404（阻擋常見 WP 掃描/探測）
+  if (/^\/wp(\/|$)/i.test(pathname)) {
+    const res404 = new NextResponse(
+      JSON.stringify({ error: "Not Found" }, null, 2),
+      { status: 404, headers: { "Content-Type": "application/json" } }
+    );
+    res404.headers.set("x-middleware-cache", "no-cache");
+    return res404;
   }
 
   const ua = req.headers.get("user-agent") || "";

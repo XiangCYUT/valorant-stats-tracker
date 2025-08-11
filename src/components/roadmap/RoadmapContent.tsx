@@ -38,6 +38,21 @@ export default function RoadmapContent({ dict }: RoadmapContentProps) {
                 <li>{t("autoDetectTheme")}</li>
               </ul>
             </div>
+
+            {/* Moved from Future Plans and marked as Demo data */}
+            <div className="panel">
+              <h3 className="text-xl font-bold mb-3 text-light-900 dark:text-light-100">Demo</h3>
+              <ul className="list-disc ml-6 space-y-2 text-light-800 dark:text-light-300">
+                <li className="flex items-center gap-2">
+                  <span>{t("hitLocationCharts")}</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">Demo</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>{t("topAgentMapStats")}</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">Demo</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -52,6 +67,7 @@ export default function RoadmapContent({ dict }: RoadmapContentProps) {
               <li>{t("userProfile")}</li>
               <li>{t("recentMatches")}</li>
               <li>{t("basicStats")}</li>
+              <li>{t("mobileOptimization")}</li>
             </ul>
           </div>
         </section>
@@ -64,10 +80,7 @@ export default function RoadmapContent({ dict }: RoadmapContentProps) {
             <div className="panel-success">
               <h3 className="text-xl font-bold mb-3 text-light-900 dark:text-light-100">{t("v10Title")}</h3>
               <ul className="list-disc ml-6 space-y-2 text-light-800 dark:text-light-300">
-                <li>{t("hitLocationCharts")}</li>
-                <li>{t("topAgentMapStats")}</li>
                 <li>{t("statsCardGeneration")}</li>
-                <li>{t("mobileOptimization")}</li>
               </ul>
             </div>
           </div>

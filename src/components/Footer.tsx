@@ -1,7 +1,7 @@
 import FooterContent from './footer/FooterContent';
 import { headers, cookies } from 'next/headers';
-import path from 'path';
-import { promises as fs } from 'fs';
+import enDict from '../../public/locales/en/translation.json';
+import zhDict from '../../public/locales/zh/translation.json';
 
 async function detectLang(): Promise<'zh' | 'en'> {
   const cookieStore = await cookies();
@@ -13,23 +13,15 @@ async function detectLang(): Promise<'zh' | 'en'> {
   return 'en';
 }
 
-async function loadDict(lang: 'zh' | 'en') {
-  const filePath = path.join(process.cwd(), 'public', 'locales', lang, 'translation.json');
-  try {
-    const content = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(content) as Record<string, any>;
-  } catch {
-    const fallback = path.join(process.cwd(), 'public', 'locales', 'en', 'translation.json');
-    const content = await fs.readFile(fallback, 'utf-8');
-    return JSON.parse(content) as Record<string, any>;
-  }
+function loadDict(lang: 'zh' | 'en') {
+  return (lang === 'zh' ? (zhDict as unknown as Record<string, any>) : (enDict as unknown as Record<string, any>));
 }
 
 export default async function Footer() {
   // 在服務器端計算當前年份與載入字典
   const currentYear = new Date().getFullYear();
   const lang = await detectLang();
-  const dict = await loadDict(lang);
+  const dict = loadDict(lang);
 
   return (
     <footer className="bg-background border-t border-gray-300 dark:border-gray-600 mt-auto">

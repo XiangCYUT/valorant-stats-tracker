@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import Card from "@/components/Card";
 import AccuracyChart from "@/components/AccuracyChart";
+import { getAccuracyDemo } from "@/actions/accuracy";
 
 // Define the types for the profile data structure
 interface PlayerStats {
@@ -171,11 +172,8 @@ export default function Profile() {
 
             // 同時加載準確度數據
             try {
-                const accuracyResponse = await fetch('/data/demoProfile.json');
-                if (!accuracyResponse.ok) throw new Error('Failed to load accuracy data');
-                const accuracyData = await accuracyResponse.json();
-
-                // 處理資料
+                // 透過 Server Action 在伺服器端讀取 demo JSON
+                const accuracyData = await getAccuracyDemo();
                 const processedData = processAccuracyData(accuracyData);
                 setAccuracyData(processedData);
             } catch (error) {

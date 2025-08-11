@@ -1,12 +1,11 @@
 "use server";
 
-import { promises as fs } from "fs";
-import path from "path";
+// Use static import so the file is bundled in the serverless function on Vercel
+// and does not rely on runtime filesystem access
+import demoProfile from "../../data/demoProfile.json" assert { type: "json" };
 
 export async function getAccuracyDemo(): Promise<any[]> {
-  const filePath = path.join(process.cwd(), "data", "demoProfile.json");
-  const content = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(content) as any[];
+  return demoProfile as any[];
 }
 
 

@@ -82,6 +82,7 @@
   "accuracyLastMatches": "最近9場統計",
   "accuracyAvgHS": "平均爆頭%",
   "accuracyHits": "擊中數",
+  "themeHint": "點擊左側圖示切換網站主題",
   "footer": {
     "copyright": "© {{year}} Valorant Web Tool. 版權所有。",
     "disclaimer": "本網站與 Riot Games 無關。Valorant 是 Riot Games 的註冊商標。",

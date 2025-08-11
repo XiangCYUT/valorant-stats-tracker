@@ -136,11 +136,14 @@ export default function ThemeToggle() {
         </div>
       )}
       
-      <span className={`text-xs px-2 py-1 rounded-lg ${
+      <span
+        title={t("themeHint")}
+        className={`text-xs px-2 py-1 rounded-lg ${
         resolvedTheme === 'dark' 
           ? 'bg-dark-400 text-light-200' 
           : 'bg-light-300 text-light-900'
-      }`}>
+      }`}
+      >
         {theme === 'system' 
           ? t("system") 
           : (resolvedTheme === 'dark' ? t("dark") : t("light"))}

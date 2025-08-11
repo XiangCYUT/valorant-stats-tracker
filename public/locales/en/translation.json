@@ -82,6 +82,7 @@
   "accuracyLastMatches": "Last 9 Matches",
   "accuracyAvgHS": "AVG HS%",
   "accuracyHits": "Hits",
+  "themeHint": "Click the icon on the left to switch theme",
   "footer": {
     "copyright": "© {{year}} Valorant Web Tool. All rights reserved.",
     "disclaimer": "This website is not affiliated with Riot Games. Valorant is a registered trademark of Riot Games.",
